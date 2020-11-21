@@ -2,5 +2,304 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "before-login-app": {
+      "root": "projects/before-login-app/",
+      "sourceRoot": "projects/before-login-app/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/before-login-app",
+            "index": "projects/before-login-app/src/index.html",
+            "main": "projects/before-login-app/src/main.ts",
+            "polyfills": "projects/before-login-app/src/polyfills.ts",
+            "tsConfig": "projects/before-login-app/tsconfig.app.json",
+            "assets": [
+              "projects/before-login-app/src/favicon.ico",
+              "projects/before-login-app/src/assets"
+            ],
+            "styles": [
+              "projects/before-login-app/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/before-login-app/src/environments/environment.ts",
+                  "with": "projects/before-login-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "before-login-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "before-login-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "before-login-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/before-login-app/src/test.ts",
+            "polyfills": "projects/before-login-app/src/polyfills.ts",
+            "tsConfig": "projects/before-login-app/tsconfig.spec.json",
+            "karmaConfig": "projects/before-login-app/karma.conf.js",
+            "styles": [
+              "projects/before-login-app/src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/before-login-app/src/favicon.ico",
+              "projects/before-login-app/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/before-login-app/tsconfig.app.json",
+              "projects/before-login-app/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "before-login-app-e2e": {
+      "root": "projects/before-login-app-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/before-login-app-e2e/protractor.conf.js",
+            "devServerTarget": "before-login-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "before-login-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/before-login-app-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "after-login-app": {
+      "root": "projects/after-login-app/",
+      "sourceRoot": "projects/after-login-app/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/after-login-app",
+            "index": "projects/after-login-app/src/index.html",
+            "main": "projects/after-login-app/src/main.ts",
+            "polyfills": "projects/after-login-app/src/polyfills.ts",
+            "tsConfig": "projects/after-login-app/tsconfig.app.json",
+            "assets": [
+              "projects/after-login-app/src/favicon.ico",
+              "projects/after-login-app/src/assets"
+            ],
+            "styles": [
+              "projects/after-login-app/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/after-login-app/src/environments/environment.ts",
+                  "with": "projects/after-login-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "after-login-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "after-login-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "after-login-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/after-login-app/src/test.ts",
+            "polyfills": "projects/after-login-app/src/polyfills.ts",
+            "tsConfig": "projects/after-login-app/tsconfig.spec.json",
+            "karmaConfig": "projects/after-login-app/karma.conf.js",
+            "styles": [
+              "projects/after-login-app/src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/after-login-app/src/favicon.ico",
+              "projects/after-login-app/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/after-login-app/tsconfig.app.json",
+              "projects/after-login-app/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "after-login-app-e2e": {
+      "root": "projects/after-login-app-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/after-login-app-e2e/protractor.conf.js",
+            "devServerTarget": "after-login-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "after-login-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/after-login-app-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "vendors": {
+      "root": "projects/vendors",
+      "sourceRoot": "projects/vendors/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/vendors/tsconfig.lib.json",
+            "project": "projects/vendors/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/vendors/src/test.ts",
+            "tsConfig": "projects/vendors/tsconfig.spec.json",
+            "karmaConfig": "projects/vendors/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/vendors/tsconfig.lib.json",
+              "projects/vendors/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "before-login-app"
 }
